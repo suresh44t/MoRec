@@ -42,10 +42,10 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin{
 
-  PageController pageController;
-  int page = 1;
+  PageController _pageController;
+  int _page = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -57,27 +57,27 @@ class _MainPageState extends State<MainPage> {
           new Discovery(key: new Key('Discovery')),
           new Mine(key: new Key('Min'))
         ],
-        controller: pageController,
+        controller: _pageController,
         onPageChanged: onPageChanged,
+        physics: NeverScrollableScrollPhysics() ,
       ),
       bottomNavigationBar: new BottomNavigationBar(
         items: [
           new BottomNavigationBarItem(
             icon: new Icon(Icons.home), 
-            title: new Text('首页')
+            title: new Text('首页'),
           ),
           new BottomNavigationBarItem(
             icon: new Icon(Icons.explore), 
-            title: new Text('发现')
+            title: new Text('发现'),
           ),
           new BottomNavigationBarItem(
             icon: new Icon(Icons.account_circle), 
-            title: new Text('首页')
+            title: new Text('我的'),
           ),
         ],
         onTap: onTap,
-        currentIndex: page,
-        type: BottomNavigationBarType.shifting,
+        currentIndex: _page,
       ),
     );
   }
@@ -86,12 +86,12 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    pageController = new PageController(initialPage: this.page);
+    _pageController = new PageController(initialPage: this._page);
   }
 
   // 点击底部导航栏
   void onTap(int index) {
-    pageController.animateToPage(
+    _pageController.animateToPage(
         index, duration: const Duration(milliseconds: 300),
         curve: Curves.ease);
   }
@@ -99,7 +99,7 @@ class _MainPageState extends State<MainPage> {
   // 页面改变
   void onPageChanged(int page) {
     setState(() {
-      this.page = page;
+      this._page = page;
     });
   }
 }

@@ -14,6 +14,22 @@ class _DiscoveryState extends State<Discovery> {
     return Scaffold(
       appBar: new AppBar(
         title: new Text('发现'),
+        actions: <Widget>[
+          new IconButton(
+            icon: new Icon(Icons.search),
+            onPressed: () => showSearch(
+              context: context, delegate: null),
+          ),
+          new PopupMenuButton(itemBuilder: (BuildContext context) {},)
+        ],
+      ),
+      drawer: new Drawer(),
+      floatingActionButton: new FloatingActionButton(
+        child: new Icon(
+          Icons.create,
+          color: Colors.white,
+        ), onPressed: () {},
+
       ),
     );
   }

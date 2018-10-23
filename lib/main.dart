@@ -59,7 +59,6 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
         ],
         controller: _pageController,
         onPageChanged: onPageChanged,
-        physics: NeverScrollableScrollPhysics() ,
       ),
       bottomNavigationBar: new BottomNavigationBar(
         items: [

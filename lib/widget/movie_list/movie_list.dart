@@ -48,7 +48,6 @@ class _MovieListState extends State<MovieList> {
       _movies.add(mediaItem2);
       _movies.add(mediaItem3);
       _isLoading = false;
-      _pageNumber++;
     });
   }
 
@@ -72,9 +71,9 @@ class _MovieListState extends State<MovieList> {
         return ListView.builder(
           itemCount: _movies.length,
           itemBuilder: (BuildContext context, int index) {
-            if (!_isLoading && index > (_movies.length) * 0.6) {
-              _loadNextPage();
-            }
+            // if (!_isLoading && index > (_movies.length) * 0.6) {
+            //   _loadNextPage();
+            // }
             return MovieListItem(_movies[index]);
           },
         );
